@@ -14,13 +14,14 @@ const Entrance = () => {
     <Fragment>
       <div className="background-image">
         <Header />
-        <Grid style={{marginTop: '10em'}}>
+        <Grid style={{ marginTop: '10em' }}>
           <Grid.Row centered>
             <Grid.Column width={6}>
               <Button
                 fluid
                 size="massive"
-                primary
+                primary={lens === 'talent'}
+                secondary={lens !== 'talent'}
                 onClick={() => setLens('talent')}
               >
                 Find Talent
@@ -30,7 +31,8 @@ const Entrance = () => {
               <Button
                 fluid
                 size="massive"
-                secondary
+                primary={lens === 'job'}
+                secondary={lens !== 'job'}
                 onClick={() => setLens('job')}
               >
                 Find Odd Job
