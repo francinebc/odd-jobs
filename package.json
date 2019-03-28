@@ -4,12 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "css-loader": "^2.1.1",
     "express": "^4.16.4",
+    "file-loader": "^3.0.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0",
-    "typescript": "^3.3.4000"
+    "sqlite3": "^4.0.6",
+    "typescript": "^3.3.4000",
+    "url-loader": "^1.1.2"
   },
   "devDependencies": {
     "@types/react": "^16.8.10",
@@ -20,6 +24,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
     "prettier": "^1.16.4",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^5.3.3",

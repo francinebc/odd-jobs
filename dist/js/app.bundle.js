@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "aa3a46a9cd0006efe66a";
+/******/ 	var hotCurrentHash = "c95ba7c95a51fb80fe11";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -71089,6 +71089,17 @@ if (true) {
 
 /***/ }),
 
+/***/ "./src/app/client/components/Entrance.css":
+/*!************************************************!*\
+  !*** ./src/app/client/components/Entrance.css ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/app/client/components/Entrance.tsx":
 /*!************************************************!*\
   !*** ./src/app/client/components/Entrance.tsx ***!
@@ -71100,10 +71111,24 @@ if (true) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var semantic_ui_react_1 = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
+__webpack_require__(/*! ./Entrance.css */ "./src/app/client/components/Entrance.css");
 var Header_1 = __webpack_require__(/*! ./Header */ "./src/app/client/components/Header.tsx");
-var Entrance = function (props) { return (React.createElement(react_1.Fragment, null,
-    React.createElement(Header_1.default, null))); };
+var SearchInput_1 = __webpack_require__(/*! ./SearchInput */ "./src/app/client/components/SearchInput.tsx");
+var Entrance = function () {
+    var _a = React.useState('talent'), lens = _a[0], setLens = _a[1];
+    return (React.createElement("div", { className: 'background-image' },
+        React.createElement(Header_1.default, null),
+        React.createElement(semantic_ui_react_1.Grid, null,
+            React.createElement(semantic_ui_react_1.Grid.Row, { centered: true },
+                React.createElement(semantic_ui_react_1.Grid.Column, { width: 6 },
+                    React.createElement(semantic_ui_react_1.Button, { fluid: true, size: "massive", primary: true, onClick: function () { return setLens('talent'); } }, "Find Talent")),
+                React.createElement(semantic_ui_react_1.Grid.Column, { width: 6 },
+                    React.createElement(semantic_ui_react_1.Button, { fluid: true, size: "massive", secondary: true, onClick: function () { return setLens('job'); } }, "Find Odd Job"))),
+            React.createElement(semantic_ui_react_1.Grid.Row, { centered: true },
+                React.createElement(semantic_ui_react_1.Grid.Column, { width: 10 },
+                    React.createElement(SearchInput_1.default, { className: "fluid", placeholder: lens }))))));
+};
 exports.default = Entrance;
 
 
@@ -71122,11 +71147,40 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var semantic_ui_react_1 = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
 var Header = function (props) {
-    return (React.createElement("div", null,
-        React.createElement(semantic_ui_react_1.Button, { primary: true }, "Primary"),
-        React.createElement(semantic_ui_react_1.Button, { secondary: true }, "Secondary")));
+    return (React.createElement("div", { style: {
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+        } },
+        React.createElement("div", null, "About Us"),
+        React.createElement("div", null, "Odd Jobs"),
+        React.createElement("div", null,
+            React.createElement(semantic_ui_react_1.Button, null, "Log In"),
+            React.createElement(semantic_ui_react_1.Button, null, "Sign Up"))));
 };
 exports.default = Header;
+
+
+/***/ }),
+
+/***/ "./src/app/client/components/SearchInput.tsx":
+/*!***************************************************!*\
+  !*** ./src/app/client/components/SearchInput.tsx ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var semantic_ui_react_1 = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
+var InputExampleIconElement = function (_a) {
+    var placeholder = _a.placeholder, className = _a.className;
+    return (React.createElement(semantic_ui_react_1.Input, { className: className, icon: React.createElement(semantic_ui_react_1.Icon, { name: "search", inverted: true, circular: true, link: true }), placeholder: placeholder ? "Search for " + placeholder + "..." : 'Search...' }));
+};
+exports.default = InputExampleIconElement;
 
 
 /***/ }),
