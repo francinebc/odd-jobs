@@ -14,7 +14,13 @@
   "devDependencies": {
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.16.4",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^5.3.3",
     "webpack": "^4.29.6",
@@ -24,6 +30,7 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "start": "yarn build && node src/server/index.js"
+    "start": "yarn build && node src/server/index.js",
+    "lint": "eslint 'src/**/*'"
   }
 }
