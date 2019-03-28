@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "1cba66d53453a5026e1f";
+/******/ 	var hotCurrentHash = "aa3a46a9cd0006efe66a";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -71102,10 +71102,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var Header_1 = __webpack_require__(/*! ./Header */ "./src/app/client/components/Header.tsx");
-var Entrance = function (props) {
-    return (React.createElement(react_1.Fragment, null,
-        React.createElement(Header_1.default, null)));
-};
+var Entrance = function (props) { return (React.createElement(react_1.Fragment, null,
+    React.createElement(Header_1.default, null))); };
 exports.default = Entrance;
 
 
