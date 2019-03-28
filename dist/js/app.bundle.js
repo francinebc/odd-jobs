@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "c95ba7c95a51fb80fe11";
+/******/ 	var hotCurrentHash = "88cf0ca7dab159b2457f";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -71111,23 +71111,25 @@ if (true) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var react_1 = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 var semantic_ui_react_1 = __webpack_require__(/*! semantic-ui-react */ "./node_modules/semantic-ui-react/dist/es/index.js");
 __webpack_require__(/*! ./Entrance.css */ "./src/app/client/components/Entrance.css");
 var Header_1 = __webpack_require__(/*! ./Header */ "./src/app/client/components/Header.tsx");
 var SearchInput_1 = __webpack_require__(/*! ./SearchInput */ "./src/app/client/components/SearchInput.tsx");
 var Entrance = function () {
     var _a = React.useState('talent'), lens = _a[0], setLens = _a[1];
-    return (React.createElement("div", { className: 'background-image' },
-        React.createElement(Header_1.default, null),
-        React.createElement(semantic_ui_react_1.Grid, null,
-            React.createElement(semantic_ui_react_1.Grid.Row, { centered: true },
-                React.createElement(semantic_ui_react_1.Grid.Column, { width: 6 },
-                    React.createElement(semantic_ui_react_1.Button, { fluid: true, size: "massive", primary: true, onClick: function () { return setLens('talent'); } }, "Find Talent")),
-                React.createElement(semantic_ui_react_1.Grid.Column, { width: 6 },
-                    React.createElement(semantic_ui_react_1.Button, { fluid: true, size: "massive", secondary: true, onClick: function () { return setLens('job'); } }, "Find Odd Job"))),
-            React.createElement(semantic_ui_react_1.Grid.Row, { centered: true },
-                React.createElement(semantic_ui_react_1.Grid.Column, { width: 10 },
-                    React.createElement(SearchInput_1.default, { className: "fluid", placeholder: lens }))))));
+    return (React.createElement(react_1.Fragment, null,
+        React.createElement("div", { className: "background-image" },
+            React.createElement(Header_1.default, null),
+            React.createElement(semantic_ui_react_1.Grid, { style: { marginTop: '10em' } },
+                React.createElement(semantic_ui_react_1.Grid.Row, { centered: true },
+                    React.createElement(semantic_ui_react_1.Grid.Column, { width: 6 },
+                        React.createElement(semantic_ui_react_1.Button, { fluid: true, size: "massive", primary: lens === 'talent', secondary: lens !== 'talent', onClick: function () { return setLens('talent'); } }, "Find Talent")),
+                    React.createElement(semantic_ui_react_1.Grid.Column, { width: 6 },
+                        React.createElement(semantic_ui_react_1.Button, { fluid: true, size: "massive", primary: lens === 'job', secondary: lens !== 'job', onClick: function () { return setLens('job'); } }, "Find Odd Job"))),
+                React.createElement(semantic_ui_react_1.Grid.Row, { centered: true },
+                    React.createElement(semantic_ui_react_1.Grid.Column, { width: 12 },
+                        React.createElement(SearchInput_1.default, { className: "fluid", placeholder: lens })))))));
 };
 exports.default = Entrance;
 
@@ -71151,7 +71153,9 @@ var Header = function (props) {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            backgroundColor: 'rgba(0, 0, 0, 0)',
+            backgroundColor: 'rgba(255, 255, 255, 0)',
+            color: 'white',
+            padding: '1em',
         } },
         React.createElement("div", null, "About Us"),
         React.createElement("div", null, "Odd Jobs"),
