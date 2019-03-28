@@ -7,6 +7,8 @@
     "express": "^4.16.4",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.86.0",
     "typescript": "^3.3.4000"
   },
   "devDependencies": {
