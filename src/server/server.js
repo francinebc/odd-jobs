@@ -16,5 +16,10 @@ server.use(require('webpack-dev-middleware')(compiler, {
 server.use(require('webpack-hot-middleware')(compiler));
 
 server.use(express.static(path.resolve(__dirname, '../../dist')));
+server.use(express.json())
+
+const authRoutes = require('./routes/auth')
+
+server.use('/api/v1/auth', authRoutes)
 
 module.exports = server;
