@@ -17,4 +17,8 @@ server.use(require('webpack-hot-middleware')(compiler));
 
 server.use(express.static(path.resolve(__dirname, '../../dist')));
 
+server.get('/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../dist', 'index.html'));
+});
+
 module.exports = server;

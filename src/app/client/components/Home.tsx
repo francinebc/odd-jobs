@@ -3,7 +3,6 @@ import { Fragment } from 'react'
 import { Button, Grid } from 'semantic-ui-react'
 
 import './Entrance.css'
-import Header from './Header'
 import SearchInput from './SearchInput'
 
 type Lens = 'job' | 'talent'
