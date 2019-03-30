@@ -1,5 +1,9 @@
 const express = require('express')
+<<<<<<< HEAD
 const db = require('../db/users').default
+=======
+const db = require('../db/users')
+>>>>>>> bdba6913b1eaf643db0a280f18289c41ccb20808
 const router = express.Router()
 const token = require('../auth/token')
 
