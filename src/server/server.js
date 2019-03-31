@@ -21,12 +21,9 @@ server.use(express.json())
 const authRoutes = require('./routes/auth')
 
 server.use('/api/v1/auth', authRoutes)
-<<<<<<< HEAD
 
 server.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../dist', 'index.html'));
 });
-=======
->>>>>>> bdba6913b1eaf643db0a280f18289c41ccb20808
 
 module.exports = server;
