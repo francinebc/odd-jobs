@@ -12,6 +12,7 @@
     "libsodium-wrappers": "^0.7.4",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-router-dom": "^5.0.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0",
     "sqlite3": "^4.0.6",
@@ -21,6 +22,8 @@
   "devDependencies": {
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
+    "@types/react-router": "^4.4.5",
+    "@types/react-router-dom": "^4.3.1",
     "eslint": "^5.15.3",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
