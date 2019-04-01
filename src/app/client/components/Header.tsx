@@ -17,7 +17,7 @@ const Header = (props: Props) => {
       }}
     >
       <div>About Us</div>
-      <div>Odd Jobs</div>
+      <Link to ='/'>Odd Jobs</Link>
       <div>
         <Link to='/login'>
           <Button>Log In</Button>
