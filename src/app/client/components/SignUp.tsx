@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Grid } from 'semantic-ui-react'
 
-import { getToken } from '../utils/token'
+import { getToken, setToken } from '../utils/token'
+import { signUp } from '../api/auth';
 
 
 const SignUp = () => {
@@ -11,14 +12,22 @@ const SignUp = () => {
   const [firstName, setFirstName] = React.useState<string>('')
   const [lastName, setLastName] = React.useState<string>('')
   const [password, setPassword] = React.useState<string>('')
+  const [error, setError] = React.useState<string>('')
 
   const handleSubmit = () => {
-    // send stuff to api to try to login 
+    signUp({email, firstName, lastName, password})
+    .then(data => {
+      setToken(data.token)
+    })
+    .catch(error => {
+      setError(error)
+    })
   }
 
   if (getToken()) {
     return <Redirect to="/" />
   }
+  
   return (
     <Fragment>
     <Grid style={{ marginTop: '10em' }}>
@@ -57,6 +66,7 @@ const SignUp = () => {
           <button className="ui button" onClick={handleSubmit}>
             Sign Up
           </button>
+          {error && <p>username already in use</p>}
         </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -64,4 +74,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default withRouter(SignUp)
