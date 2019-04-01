@@ -17,12 +17,14 @@ const Header = (props: Props) => {
       }}
     >
       <div>About Us</div>
-      <div>Odd Jobs</div>
+      <Link to ='/'>Odd Jobs</Link>
       <div>
-        <Link to="/login">
+        <Link to='/login'>
           <Button>Log In</Button>
         </Link>
-        <Button>Sign Up</Button>
+        <Link to='/sign-up'>
+          <Button>Sign Up</Button>
+        </Link>
       </div>
     </div>
   )

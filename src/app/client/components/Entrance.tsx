@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import './Entrance.css'
 import Header from './Header'
 import Login from './Login';
+import SignUp from './SignUp';
 
 type Lens = 'job' | 'talent'
 
@@ -19,6 +20,7 @@ const Entrance = () => {
           <Header />
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/sign-up" component={SignUp} />
         </div>
       </Fragment>
     </Router>
