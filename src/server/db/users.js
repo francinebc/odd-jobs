@@ -2,12 +2,12 @@ const connection = require('./index')
 const { generateHash } = require('../auth/hash')
 
 module.exports = {
-  registerUser,
+  signUpUser,
   getUser
 }
 
-function registerUser(user, db = connection) {
-  generateHash(user.password).then(hash => {
+function signUpUser(user, db = connection) {
+  return generateHash(user.password).then(hash => {
     return db('users')
       .insert({
         email: user.email,
@@ -30,7 +30,7 @@ function registerUser(user, db = connection) {
 function getUser(user, db = connection) {
   return db('users')
     .where({
-      username: user.username
+      email: user.email
     })
     .first()
 }
