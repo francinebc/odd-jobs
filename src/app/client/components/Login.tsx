@@ -13,6 +13,7 @@ const Login = () => {
   if (getToken()) {
     return <Redirect to="/" />
   }
+  
   return (
     <div>
       <div className="ui input">
