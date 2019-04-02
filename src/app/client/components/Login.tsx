@@ -43,6 +43,7 @@ const Login = () => {
       <button className="ui button" onClick={handleSubmit}>
         Login
       </button>
+      {error && <p>That email or password is incorrect</p>}
     </div>
   )
 }
