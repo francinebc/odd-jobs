@@ -1,13 +1,21 @@
 import * as React from 'react'
 import { Redirect } from 'react-router-dom'
-import { getToken } from '../utils/token'
+import { getToken, setToken } from '../utils/token'
+import { login } from '../api/auth';
 
 const Login = () => {
   const [email, setEmail] = React.useState<string>('')
   const [password, setPassword] = React.useState<string>('')
+  const [error, setError] = React.useState<string>('')
 
   const handleSubmit = () => {
-    // send stuff to api to try to login 
+    login({email, password})
+    .then(data => {
+      setToken(data.token)
+    })
+    .catch(error => {
+      setError(error)
+    })
   }
 
   if (getToken()) {
