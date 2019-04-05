@@ -1,13 +1,14 @@
-const express = require('express')
-const db = require('../db/users')
+import express, { Request, Response } from 'express'
+import db from '../db/users'
+import token from '../auth/token'
+import hash from '../auth/hash'
+
 const router = express.Router()
-const token = require('../auth/token')
-const hash = require('../auth/hash')
 
 router.post('/signUp', validateSignUp, signUp, token.issue)
 router.post('/login', validateLogin, checkUser, token.issue)
 
-function validateSignUp (req, res, next) {
+function validateSignUp (req: Request, res: Response, next: (error?: Error) => void) {
   const {email, firstName, lastName, password} = req.body
   if (!firstName) {
     return next(new Error('No first name provided'))

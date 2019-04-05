@@ -1,12 +1,13 @@
-const jwt = require('jsonwebtoken')
-const jwtTestSecret = require('../../tests/server/routes/jwt-test-secret')
+import jwt from 'jsonwebtoken'
+import jwtTestSecret from '../../tests/server/routes/jwt-test-secret'
+import { Request, Response } from 'express';
 
-module.exports = {
+export default {
   issue,
   getSecret
 }
 
-function issue (req, res) {
+export function issue (req: Request, res: Response) {
   res.json({
     ok: true,
     message: 'Authentication successful.',
@@ -15,12 +16,12 @@ function issue (req, res) {
   })
 }
 
-function createToken (id) {
+function createToken (id: number) {
   const secret = process.env.JWT_SECRET || jwtTestSecret
   return jwt.sign({id}, secret, {expiresIn: '1d'})
 }
 
-function getSecret (req, payload, done) {
+export function getSecret (req: Request, payload, done: (error: any, secret: string) => void) {
   const secret = process.env.JWT_SECRET || jwtTestSecret
   done(null, secret)
 }
