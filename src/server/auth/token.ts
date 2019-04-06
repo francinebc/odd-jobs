@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken'
+import * as jwt from 'jsonwebtoken'
 import jwtTestSecret from '../../tests/server/routes/jwt-test-secret'
 import { Request, Response } from 'express';
 
@@ -21,7 +21,7 @@ function createToken (id: number) {
   return jwt.sign({id}, secret, {expiresIn: '1d'})
 }
 
-export function getSecret (req: Request, payload, done: (error: any, secret: string) => void) {
+export function getSecret (req: Request, payload: any, done: (error: any, secret: string) => void) {
   const secret = process.env.JWT_SECRET || jwtTestSecret
   done(null, secret)
 }

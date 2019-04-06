@@ -1,9 +1,9 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+import * as path from 'path'
+import * as webpack from 'webpack'
+import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-module.exports = {
+const config: webpack.Configuration = {
   entry: {
     app: ['./src/app/client/App.tsx', 'webpack-hot-middleware/client'],
     vendor: ['react', 'react-dom'],
@@ -14,7 +14,7 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.css'],
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.css', '.html', '.jpg', '.png', '.gif'],
   },
   module: {
     rules: [
@@ -26,9 +26,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          MiniCssExtractPlugin.loader,
           'css-loader',
         ],
       },
@@ -47,10 +45,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'app', 'client', 'index.html'),
+      template: path.resolve('src', 'app', 'client', 'index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),
   ],
   mode: 'development',
 }
+
+export default config
