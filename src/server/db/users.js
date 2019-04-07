@@ -14,7 +14,7 @@ function signUpUser(user, db = connection) {
       return insertUser(user.email, hash, db)
         .then(([id]) => {
           return insertProfile(id, user, db)
-            .then((data) => {
+            .then(() => {
               return id
             })
         })

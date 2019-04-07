@@ -7,7 +7,7 @@ const user = {
   email: 'sandra@hotmail.com',
   firstName: 'sandra',
   lastName: 'many',
-  password: '1234'
+  password: '1234',
 }
 
 beforeEach(() => {
@@ -25,6 +25,21 @@ test('signUpUser registers a new user', () => {
     .then(id => {
       const actualId = id
       expect(actualId).toBe(expectedId)
+    })
+    .catch(err => expect(err).toBeNull())
+})
+
+test('signUpUser does not re-signup same user', () => {
+  const expectedError = 'UNIQUE constraint failed: users.email'
+  return db
+    .signUpUser(user, testDb)
+    .then(() => {
+      db.signUpUser(user, testDb)
+        .catch(err => {
+          const actualError = err.message
+          const containing = actualError.includes(expectedError)
+          expect(containing).toBe(true)
+        })
     })
     .catch(err => expect(err).toBeNull())
 })
