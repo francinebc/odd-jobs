@@ -43,3 +43,15 @@ test('signUpUser does not re-signup same user', () => {
     })
     .catch(err => expect(err).toBeNull())
 })
+
+test('insertUser returns id', () => {
+  const expectedId = 3
+  const hash = "akbsafbf"
+  return db
+    .insertUser(user, hash, testDb)
+    .then((data) => {
+      const actualId = data[0]
+      expect(actualId).toBe(expectedId)
+    })
+    .catch(err => expect(err).toBeNull())
+})
