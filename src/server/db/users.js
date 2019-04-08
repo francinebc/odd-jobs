@@ -8,17 +8,11 @@ module.exports = {
   insertProfile
 }
 
-function signUpUser(user, db = connection) {
-  return generateHash(user.password)
-    .then(hash => {
-      return insertUser(user.email, hash, db)
-        .then(([id]) => {
-          return insertProfile(id, user, db)
-            .then(() => {
-              return id
-            })
-        })
-  })
+async function signUpUser(user, db = connection) {
+  const hash = await generateHash(user.password)
+  const [id] = await insertUser(user.email, hash, db)
+  await insertProfile(id, user, db)
+  return id
 }
 
 function insertUser(email, hash, db) {
