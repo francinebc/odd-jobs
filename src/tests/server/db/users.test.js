@@ -56,46 +56,22 @@ test('signUpUser does not re-signup same user', () => {
     .catch(err => expect(err).toBeNull())
 })
 
-// cannot make this test fail
-test('signUpUser hashes password', () => {
-  return db
-    .signUpUser(user, testDb)
-    .then(() => {
-      db.getUser(user, testDb)
-        .then(data => {
-          const matched = user.password === data.hash
-          expect(matched).toBeFalsy()
-        })
-        .catch(err => expect(err).toBeNull())
-    })
-    .catch(err => expect(err).toBeNull())
+test('signUpUser hashes password', async () => {
+  await db.signUpUser(user, testDb)
+  const data = await db.getUser(user, testDb)
+  const matched = user.password === data.hash
+  expect(matched).toBeFalsy()
 })
 
-// cannot make this test fail
-test('getUser returns user with correct email', () => {
-  return db
-    .signUpUser(user, testDb)
-    .then(() => {
-      db.getUser(user, testDb)
-        .then(data => {
-          expect(user.email).toMatch(data.email)
-        })
-        .catch(err => expect(err).toBeNull())
-    })
-    .catch(err => expect(err).toBeNull())
+test('getUser returns user with correct email', async () => {
+  await db.signUpUser(user, testDb)
+  const data = await db.getUser(user, testDb)
+  expect(user.email).toMatch(data.email)
 })
 
-//cannot make this test fail
-test('getUser returns undefined with incorrect email', () => {
-  return db
-    .signUpUser(user, testDb)
-    .then(() => {
-      user.email = 'sammy'
-      db.getUser(user, testDb)
-        .then(data => {
-          expect(data).toBeUndefined()
-        })
-        .catch(err => expect(err).toBeNull())
-    })
-    .catch(err => expect(err).toBeNull())
+test('getUser returns undefined with incorrect email', async () => {
+  await db.signUpUser(user, testDb)
+  user.email = 'sammy'
+  const data = await db.getUser(user, testDb)
+  expect(data).toBeUndefined()
 })
