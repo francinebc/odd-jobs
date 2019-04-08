@@ -10,18 +10,17 @@ router.post('/login', validateLogin, checkUser, token.issue)
 function validateSignUp (req, res, next) {
   const {email, firstName, lastName, password} = req.body
   if (!firstName) {
-    return next(new Error('No first name provided'))
+    return authError(res, 'No first name provided', 400)
   }
   if (!lastName) {
-    return next(new Error('No last name provided'))
+    return authError(res, 'No last name provided', 400)
   }
   if (!email) {
-    return next(new Error('No email provided'))
+    return authError(res, 'No email provided', 400)
   }
   if (!password) {
-    return next(new Error('No password provided'))
+    return authError(res, 'No password provided', 400)
   }
-
   next()
 } 
 
@@ -42,10 +41,10 @@ function signUp (req, res, next) {
 function validateLogin (req, res, next) {
   const {email, password} = req.body
   if (!email) {
-    return next(new Error('No email provided'))
+    return authError(res, 'No email provided', 400)
   }
   if (!password) {
-    return next(new Error('No password provided'))
+    return authError(res, 'No password provided', 400)
   }
 
   next()
@@ -73,7 +72,7 @@ function invalidCredentials (res) {
   })
 }
 
-function signUpError (res, errorMessage, errorCode) {
+function authError (res, errorMessage, errorCode) {
   res.status(errorCode).json({
     ok: false,
     message: errorMessage
