@@ -6,7 +6,6 @@ import { Grid } from 'semantic-ui-react'
 import { getToken, setToken } from '../utils/token'
 import { signUp } from '../api/auth';
 
-
 const SignUp = () => {
   const [email, setEmail] = React.useState<string>('')
   const [firstName, setFirstName] = React.useState<string>('')
@@ -18,9 +17,10 @@ const SignUp = () => {
     signUp({email, firstName, lastName, password})
     .then(data => {
       setToken(data.token)
+      location.reload()
     })
     .catch(error => {
-      setError(error)
+      setError(error.response.body.message)
     })
   }
 
@@ -35,7 +35,7 @@ const SignUp = () => {
         <Grid.Column width={6}>
           <div className="ui input">
             <input
-              type="text"
+              type="email"
               placeholder="email"
               name="email"
               value={email}
@@ -66,7 +66,7 @@ const SignUp = () => {
           <button className="ui button" onClick={handleSubmit}>
             Sign Up
           </button>
-          {error && <p>username already in use</p>}
+          {error && <p>{error}</p>}
         </Grid.Column>
         </Grid.Row>
       </Grid>
