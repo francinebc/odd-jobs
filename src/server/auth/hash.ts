@@ -1,11 +1,6 @@
-const sodium = require('libsodium-wrappers')
+import * as sodium from 'libsodium-wrappers'
 
-module.exports = {
-  generateHash,
-  verify
-}
-
-function generateHash (password) {
+export function generateHash (password: string) {
   // We have to wait for sodium to initialise. sodium.ready is a promise.
   return sodium.ready.then(() =>
     sodium.crypto_pwhash_str(
@@ -16,7 +11,12 @@ function generateHash (password) {
   )
 }
 
-function verify (hash, password) {
+export function verify (hash: string, password: string) {
   return sodium.ready.then(() =>
     sodium.crypto_pwhash_str_verify(hash, password))
+}
+
+export default {
+  generateHash,
+  verify
 }

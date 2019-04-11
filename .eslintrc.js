@@ -20,6 +20,6 @@ module.exports = {
     'react',
   ],
   rules: {
-    semi: false
+    semi: 0
   },
 };

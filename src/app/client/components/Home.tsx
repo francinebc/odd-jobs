@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {useState} from 'react'
 import { Fragment } from 'react'
 import { Button, Grid } from 'semantic-ui-react'
 
@@ -8,7 +9,7 @@ import SearchInput from './SearchInput'
 type Lens = 'job' | 'talent'
 
 const Home = () => {
-  const [lens, setLens] = React.useState<Lens>('talent')
+  const [lens, setLens] = useState<Lens>('talent')
   return (
     <Fragment>
       <Grid style={{ marginTop: '10em' }}>

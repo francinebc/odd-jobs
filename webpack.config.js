@@ -6,11 +6,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   entry: {
     app: ['./src/app/client/App.tsx', 'webpack-hot-middleware/client'],
-    vendor: ['react', 'react-dom'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].bundle.js',
+    filename: 'bundle.js',
   },
   devtool: 'source-map',
   resolve: {
@@ -48,6 +47,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'app', 'client', 'index.html'),
+      hash: true,
+      filename: './index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin(),

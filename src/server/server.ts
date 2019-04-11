@@ -1,5 +1,5 @@
-const path = require('path');
-const express = require('express');
+import * as path from 'path'
+import * as express from 'express'
 const webpack = require('webpack');
 const webpackConfig = require('../../webpack.config.js');
 
@@ -26,4 +26,4 @@ server.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../dist', 'index.html'));
 });
 
-module.exports = server;
+export default server;

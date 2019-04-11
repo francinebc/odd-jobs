@@ -5,13 +5,15 @@
     "jsx": "react",
     "module": "commonjs",
     "noImplicitAny": true,
-    "outDir": "./build/",
+    "allowJs": true,
+    "outDir": "./dist/",
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "lib": ["es2018", "dom"]
   },
   "include": [
-    "./src/**/**/*"
+    "./src/server/**/**/*"
   ]
 }

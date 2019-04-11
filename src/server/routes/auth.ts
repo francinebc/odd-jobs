@@ -1,13 +1,16 @@
-const express = require('express')
-const db = require('../db/users')
+import * as express from 'express'
+import {Request, Response} from 'express'
+
+import {getUser, signUpUser} from '../db/users'
+import token from '../auth/token'
+import hash from '../auth/hash'
+
 const router = express.Router()
-const token = require('../auth/token')
-const hash = require('../auth/hash')
 
 router.post('/signUp', validateSignUp, signUp, token.issue)
 router.post('/login', validateLogin, checkUser, token.issue)
 
-function validateSignUp (req, res, next) {
+function validateSignUp (req: Request, res: Response, next: () => void) {
   const {email, firstName, lastName, password} = req.body
   console.log(req.body)
   if (!firstName) {
@@ -25,8 +28,8 @@ function validateSignUp (req, res, next) {
   next()
 } 
 
-function signUp (req, res, next) {
-  db.signUpUser(req.body)
+function signUp (req: Request, res: Response, next: () => void) {
+  signUpUser(req.body)
     .then((id) => {
       res.locals.userId = id
       next()
@@ -39,7 +42,7 @@ function signUp (req, res, next) {
 }
 
 
-function validateLogin (req, res, next) {
+function validateLogin (req: Request, res: Response, next: () => void) {
   const {email, password} = req.body
   if (!email) {
     return authError(res, 'No email provided', 400)
@@ -51,8 +54,8 @@ function validateLogin (req, res, next) {
   next()
 }
 
-function checkUser (req, res, next) {
-  db.getUser(req.body)
+function checkUser (req: Request, res: Response, next: () => void) {
+  getUser(req.body)
     .then(user => {
       if (user) res.locals.userId = user.id
       return user && hash.verify(user.hash, req.body.password)
@@ -63,13 +66,13 @@ function checkUser (req, res, next) {
     .catch(() => {authError(res, `Something bad happened. We don't know why.`, 500)})
 }
 
-function invalidCredentials (res) {
+function invalidCredentials (res: Response) {
   res.status(400).json({
     errorType: 'INVALID_CREDENTIALS'
   })
 }
 
-function authError (res, errorMessage, errorCode) {
+function authError (res: Response, errorMessage: string, errorCode: number) {
   res.status(errorCode).json({
     ok: false,
     message: errorMessage
