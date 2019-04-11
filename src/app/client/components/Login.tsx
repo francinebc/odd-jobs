@@ -12,9 +12,10 @@ const Login = () => {
     login({email, password})
     .then(data => {
       setToken(data.token)
+      location.reload()
     })
     .catch(error => {
-      setError(error)
+      setError(error.response.body.message)
     })
   }
 
@@ -26,7 +27,7 @@ const Login = () => {
     <div>
       <div className="ui input">
         <input
-          type="text"
+          type="email"
           placeholder="email"
           name="email"
           value={email}

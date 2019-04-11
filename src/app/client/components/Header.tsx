@@ -31,7 +31,10 @@ const Header = (props: Props) => {
         </div>}      
         {getToken() && 
         <div>
-          <Button onClick={() => {clearToken()}}>Log Out</Button>
+          <Button onClick={() => {
+            clearToken()
+            location.reload()
+            }}>Log Out</Button>
         </div>}    
       </div>
     </div>

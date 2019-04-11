@@ -9,6 +9,7 @@ router.post('/login', validateLogin, checkUser, token.issue)
 
 function validateSignUp (req, res, next) {
   const {email, firstName, lastName, password} = req.body
+  console.log(req.body)
   if (!firstName) {
     return authError(res, 'No first name provided', 400)
   }
@@ -31,9 +32,9 @@ function signUp (req, res, next) {
       next()
     })
     .catch(({message}) => {
-      message.includes('UNIQUE constraint failed: users.username')
-        ? signUpError(res, 'User already exists.', 400)
-        : signUpError(res, `Something bad happened. We don't know why.`, 500)
+      message.includes('UNIQUE constraint failed: users.email')
+        ? authError(res, 'User already exists.', 400)
+        : authError(res, `Something bad happened. We don't know why.`, 500)
     })
 }
 
@@ -59,11 +60,7 @@ function checkUser (req, res, next) {
     .then(isValid => {
       return isValid ? next() : invalidCredentials(res)
     })
-    .catch(() => {
-      res.status(400).json({
-        errorType: 'DATABASE_ERROR'
-      })
-    })
+    .catch(() => {authError(res, `Something bad happened. We don't know why.`, 500)})
 }
 
 function invalidCredentials (res) {
