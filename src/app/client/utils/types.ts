@@ -1,11 +1,11 @@
-export interface SignUpUser {
+export type SignUpUser = {
   email: string;
   firstName: string;
   lastName: string;
   password: string;
 }
 
-export interface LoginUser {
+export type LoginUser = {
   email: string;
   password: string;
 }

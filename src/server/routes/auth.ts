@@ -12,7 +12,6 @@ router.post('/login', validateLogin, checkUser, token.issue)
 
 function validateSignUp (req: Request, res: Response, next: () => void) {
   const {email, firstName, lastName, password} = req.body
-  console.log(req.body)
   if (!firstName) {
     return authError(res, 'No first name provided', 400)
   }
